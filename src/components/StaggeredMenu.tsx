@@ -29,7 +29,7 @@ export default function StaggeredMenu() {
       scaleY: 1,
       transition: {
         duration: 0.5,
-        ease: [0.12, 0, 0.39, 0],
+        ease: [0.12, 0, 0.39, 0] as [number, number, number, number],
       },
     },
     exit: {
@@ -37,7 +37,7 @@ export default function StaggeredMenu() {
       transition: {
         delay: 0.5,
         duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
       },
     },
   };
@@ -63,13 +63,13 @@ export default function StaggeredMenu() {
       y: "30vh",
       transition: {
         duration: 0.5,
-        ease: [0.37, 0, 0.63, 1],
+        ease: [0.37, 0, 0.63, 1] as [number, number, number, number],
       },
     },
     open: {
       y: 0,
       transition: {
-        ease: [0, 0.55, 0.45, 1],
+        ease: [0, 0.55, 0.45, 1] as [number, number, number, number],
         duration: 0.7,
       },
     },
