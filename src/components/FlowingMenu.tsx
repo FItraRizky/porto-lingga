@@ -140,6 +140,9 @@ const MenuItem: React.FC<MenuItemProps & { onClick?: () => void }> = React.memo(
   }
 );
 
+FlowingMenu.displayName = "FlowingMenu";
+MenuItem.displayName = "MenuItem";
+
 export default FlowingMenu;
 
 // Note: this is also needed
