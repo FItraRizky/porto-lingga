@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 import { useLanguage } from "@/context/LanguageContext";
 import FlowingMenu from "./FlowingMenu";
@@ -10,6 +11,19 @@ import FlowingMenu from "./FlowingMenu";
 export default function StaggeredMenu() {
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Deteksi ukuran layar
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
 
   const menuItems = [
     { name: t.menu.profile, href: "#profile" },
@@ -61,6 +75,23 @@ export default function StaggeredMenu() {
     },
   };
 
+  const mobileLinkVars = {
+    initial: {
+      y: "30vh",
+      transition: {
+        duration: 0.5,
+        ease: [0.37, 0, 0.63, 1] as [number, number, number, number],
+      },
+    },
+    open: {
+      y: 0,
+      transition: {
+        ease: [0, 0.55, 0.45, 1] as [number, number, number, number],
+        duration: 0.7,
+      },
+    },
+  };
+
   return (
     <>
       <button
@@ -87,22 +118,48 @@ export default function StaggeredMenu() {
                 </span>
               </div>
 
-              <motion.div
-                variants={containerVars}
-                initial="initial"
-                animate="open"
-                exit="initial"
-                className="flex-1 w-full relative z-50 overflow-hidden"
-              >
-                <FlowingMenu
-                  items={menuItems.map((item) => ({
-                    link: item.href,
-                    text: item.name,
-                    image: "/profile-lingga.jpg",
-                    onClick: toggleMenu,
-                  }))}
-                />
-              </motion.div>
+              {/* Desktop: FlowingMenu */}
+              {isDesktop ? (
+                <motion.div
+                  variants={containerVars}
+                  initial="initial"
+                  animate="open"
+                  exit="initial"
+                  className="flex-1 w-full relative z-50 overflow-hidden"
+                >
+                  <FlowingMenu
+                    items={menuItems.map((item) => ({
+                      link: item.href,
+                      text: item.name,
+                      image: "/profile-lingga.jpg",
+                      onClick: toggleMenu,
+                    }))}
+                  />
+                </motion.div>
+              ) : (
+                /* Mobile/Tablet: Simple Staggered Menu */
+                <motion.div
+                  variants={containerVars}
+                  initial="initial"
+                  animate="open"
+                  exit="initial"
+                  className="flex flex-col h-full justify-center items-center gap-4 overflow-hidden"
+                >
+                  {menuItems.map((item, index) => (
+                    <div key={index} className="overflow-hidden">
+                      <motion.div variants={mobileLinkVars}>
+                        <Link
+                          href={item.href}
+                          onClick={toggleMenu}
+                          className="text-4xl md:text-5xl font-bold uppercase tracking-tight hover:text-gray-400 transition-colors block"
+                        >
+                          {item.name}
+                        </Link>
+                      </motion.div>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
 
               <div className="flex justify-between text-sm font-medium uppercase tracking-widest text-gray-400">
                 <span>{t.menu.location}</span>
