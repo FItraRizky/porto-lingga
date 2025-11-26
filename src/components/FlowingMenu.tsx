@@ -31,6 +31,26 @@ const MenuItem: React.FC<MenuItemProps & { onClick?: () => void }> = React.memo(
     const marqueeRef = React.useRef<HTMLDivElement>(null);
     const marqueeInnerRef = React.useRef<HTMLDivElement>(null);
 
+    // State untuk mendeteksi apakah layar desktop/laptop
+    const [isDesktop, setIsDesktop] = React.useState(false);
+
+    // Deteksi ukuran layar
+    React.useEffect(() => {
+      const checkScreenSize = () => {
+        // Efek flowing hanya aktif di layar ≥1024px (desktop/laptop)
+        setIsDesktop(window.innerWidth >= 1024);
+      };
+
+      // Check saat pertama kali mount
+      checkScreenSize();
+
+      // Listen untuk perubahan ukuran layar
+      window.addEventListener("resize", checkScreenSize);
+
+      // Cleanup
+      return () => window.removeEventListener("resize", checkScreenSize);
+    }, []);
+
     const animationDefaults = React.useMemo(
       () => ({ duration: 0.6, ease: "expo" }),
       []
@@ -54,6 +74,9 @@ const MenuItem: React.FC<MenuItemProps & { onClick?: () => void }> = React.memo(
 
     const handleMouseEnter = React.useCallback(
       (ev: React.MouseEvent<HTMLAnchorElement>) => {
+        // Hanya jalankan animasi di desktop/laptop
+        if (!isDesktop) return;
+
         if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
           return;
         const rect = itemRef.current.getBoundingClientRect();
@@ -71,11 +94,14 @@ const MenuItem: React.FC<MenuItemProps & { onClick?: () => void }> = React.memo(
           })
           .to([marqueeRef.current, marqueeInnerRef.current], { y: "0%" });
       },
-      [animationDefaults, findClosestEdge]
+      [animationDefaults, findClosestEdge, isDesktop]
     );
 
     const handleMouseLeave = React.useCallback(
       (ev: React.MouseEvent<HTMLAnchorElement>) => {
+        // Hanya jalankan animasi di desktop/laptop
+        if (!isDesktop) return;
+
         if (!itemRef.current || !marqueeRef.current || !marqueeInnerRef.current)
           return;
         const rect = itemRef.current.getBoundingClientRect();
@@ -94,7 +120,7 @@ const MenuItem: React.FC<MenuItemProps & { onClick?: () => void }> = React.memo(
           }
         );
       },
-      [animationDefaults, findClosestEdge]
+      [animationDefaults, findClosestEdge, isDesktop]
     );
 
     const repeatedMarqueeContent = React.useMemo(() => {
