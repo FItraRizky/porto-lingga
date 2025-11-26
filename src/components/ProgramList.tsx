@@ -1,54 +1,26 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import { Mic, Radio, Calendar } from "lucide-react";
 
-const programs = [
-  {
-    name: "Morning Spirit",
-    role: "Main Host",
-    time: "06:00 - 10:00",
-    description: "Start your day with energy, news updates, and the best hits.",
-  },
-  {
-    name: "Pro 2 Creative",
-    role: "Co-Host",
-    time: "13:00 - 15:00",
-    description:
-      "Discussing creative trends, art, and lifestyle for the youth.",
-  },
-  {
-    name: "Weekend Vibes",
-    role: "Host",
-    time: "Sat-Sun 15:00",
-    description: "Relaxing weekend tunes and interactive listener sessions.",
-  },
-  {
-    name: "Night Flight",
-    role: "Host",
-    time: "20:00 - 22:00",
-    description: "Smooth jazz and deep talks to end the day.",
-  },
-];
-
 export default function ProgramList() {
+  const { t } = useLanguage();
+
   return (
-    <section
-      id="broadcasts"
-      className="border-b border-white text-white"
-    >
+    <section id="broadcasts" className="border-b border-white text-white">
       <div className="grid grid-cols-1 md:grid-cols-12">
         <div className="col-span-1 border-b border-black p-6 md:col-span-4 md:border-b-0 md:border-r dark:border-white">
           <h2 className="sticky top-24 text-5xl font-black uppercase leading-none tracking-tighter">
-            On Air <br /> Programs
+            {t.programs.title}
           </h2>
           <p className="mt-4 text-lg font-medium text-gray-600 dark:text-gray-400">
-            Tuning into the frequency of the generation.
+            {t.programs.subtitle}
           </p>
         </div>
 
         <div className="col-span-1 md:col-span-8">
-          {programs.map((program, index) => (
+          {t.programs.items.map((program, index) => (
             <motion.div
               key={program.name}
               initial={{ opacity: 0, y: 20 }}

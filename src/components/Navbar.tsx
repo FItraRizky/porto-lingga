@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 import StaggeredMenu from "./StaggeredMenu";
 
 const navLinks = [
@@ -13,6 +14,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const { language, setLanguage } = useLanguage();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -55,6 +57,27 @@ export default function Navbar() {
             >
               Lingga Fani
             </Link>
+
+            {/* Language Toggle */}
+            <div className="flex items-center gap-2 mr-4 font-bold uppercase tracking-widest text-sm">
+              <button
+                onClick={() => setLanguage("en")}
+                className={`${
+                  language === "en" ? "text-white" : "text-gray-500"
+                } transition-colors`}
+              >
+                EN
+              </button>
+              <span>/</span>
+              <button
+                onClick={() => setLanguage("id")}
+                className={`${
+                  language === "id" ? "text-white" : "text-gray-500"
+                } transition-colors`}
+              >
+                ID
+              </button>
+            </div>
 
             {/* Mobile Menu */}
             <StaggeredMenu />

@@ -1,10 +1,13 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import Marquee from "./Marquee";
 import GradientText from "./GradientText";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative flex min-h-[90vh] flex-col justify-between border-b border-white text-white overflow-hidden">
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 text-center">
@@ -18,8 +21,7 @@ export default function Hero() {
             animationSpeed={6}
             className="text-6xl font-black uppercase leading-[0.9] tracking-tighter sm:text-8xl md:text-9xl lg:text-[10rem]"
           >
-            The Voice <br />
-            Of Generation
+            {t.hero.title}
           </GradientText>
         </motion.div>
 
@@ -33,7 +35,7 @@ export default function Hero() {
             animationSpeed={4}
             className="mt-8 text-xl font-bold uppercase tracking-widest sm:text-2xl"
           >
-            Radio Announcer at RRI PRO 2
+            {t.hero.subtitle}
           </GradientText>
         </motion.div>
       </div>
@@ -42,18 +44,24 @@ export default function Hero() {
         duration={40}
         className="border-t border-black dark:border-white"
       >
-        <span className="text-4xl font-black uppercase mx-4">ON AIR</span>
-        <span className="text-4xl font-black uppercase mx-4">•</span>
-        <span className="text-4xl font-black uppercase mx-4">95.3 FM</span>
-        <span className="text-4xl font-black uppercase mx-4">•</span>
-        <span className="text-4xl font-black uppercase mx-4">RRI PRO 2</span>
-        <span className="text-4xl font-black uppercase mx-4">•</span>
         <span className="text-4xl font-black uppercase mx-4">
-          LIVE BROADCAST
+          {t.hero.marquee.onAir}
         </span>
         <span className="text-4xl font-black uppercase mx-4">•</span>
         <span className="text-4xl font-black uppercase mx-4">
-          MASTER OF CEREMONY
+          {t.hero.marquee.frequency}
+        </span>
+        <span className="text-4xl font-black uppercase mx-4">•</span>
+        <span className="text-4xl font-black uppercase mx-4">
+          {t.hero.marquee.station}
+        </span>
+        <span className="text-4xl font-black uppercase mx-4">•</span>
+        <span className="text-4xl font-black uppercase mx-4">
+          {t.hero.marquee.live}
+        </span>
+        <span className="text-4xl font-black uppercase mx-4">•</span>
+        <span className="text-4xl font-black uppercase mx-4">
+          {t.hero.marquee.mc}
         </span>
         <span className="text-4xl font-black uppercase mx-4">•</span>
       </Marquee>

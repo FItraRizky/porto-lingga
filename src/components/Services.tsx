@@ -1,40 +1,36 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { Mic2, Megaphone, PenTool, Users } from "lucide-react";
 
-const services = [
-  {
-    title: "Radio Broadcasting",
-    icon: Mic2,
-    description:
-      "Professional on-air personality with experience in news, entertainment, and interviews.",
-  },
-  {
-    title: "Voice Over (VO)",
-    icon: Megaphone,
-    description:
-      "Versatile voice talent for commercials, narrations, and brand identities.",
-  },
-  {
-    title: "Public Speaking (MC)",
-    icon: Users,
-    description:
-      "Engaging Master of Ceremony for corporate events, weddings, and concerts.",
-  },
-  {
-    title: "Scriptwriting",
-    icon: PenTool,
-    description:
-      "Creative copywriting for radio ads, content planning, and broadcast scripts.",
-  },
-];
-
 export default function Services() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      title: t.services.radio.title,
+      icon: Mic2,
+      description: t.services.radio.desc,
+    },
+    {
+      title: t.services.vo.title,
+      icon: Megaphone,
+      description: t.services.vo.desc,
+    },
+    {
+      title: t.services.mc.title,
+      icon: Users,
+      description: t.services.mc.desc,
+    },
+    {
+      title: t.services.script.title,
+      icon: PenTool,
+      description: t.services.script.desc,
+    },
+  ];
+
   return (
-    <section
-      id="services"
-      className="border-b border-white text-white"
-    >
+    <section id="services" className="border-b border-white text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {services.map((service, index) => (
           <div

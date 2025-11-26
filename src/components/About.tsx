@@ -1,9 +1,12 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import Image from "next/image";
 import RotatingText from "./RotatingText";
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
     <section id="profile" className="border-b border-white text-white">
       <div className="grid grid-cols-1 md:grid-cols-2">
@@ -21,7 +24,7 @@ export default function About() {
         <div className="flex flex-col justify-center p-8 md:p-16">
           <h2 className="mb-8 text-4xl font-black uppercase leading-none tracking-tighter md:text-6xl">
             <RotatingText
-              texts={["About Lingga", "The Voice"]}
+              texts={t.about.rotating}
               mainClassName="px-2 sm:px-2 md:px-3 bg-[#ff007f] text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-start rounded-lg inline-flex"
               staggerFrom="last"
               initial={{ y: "100%" }}
@@ -34,14 +37,11 @@ export default function About() {
             />
           </h2>
           <p className="text-lg font-medium leading-relaxed md:text-xl">
-            Lingga Fani is a professional broadcaster connecting with listeners
-            through <span className="font-bold">RRI PRO 2</span>. Bringing
-            energy, news, and entertainment to the airwaves.
+            {t.about.p1} <span className="font-bold">{t.about.p1_bold}</span>
+            {t.about.p1_end}
           </p>
           <p className="mt-6 text-lg font-medium leading-relaxed md:text-xl opacity-80">
-            With a passion for storytelling and a dynamic presence, Lingga has
-            become a staple voice for the generation, bridging the gap between
-            traditional radio and modern media consumption.
+            {t.about.p2}
           </p>
         </div>
       </div>

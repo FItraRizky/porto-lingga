@@ -1,43 +1,22 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 
-const testimonials = [
-  {
-    quote:
-      "Lingga has an undeniable energy that captivates the audience instantly. A true professional behind the mic.",
-    author: "Station Manager",
-    role: "RRI PRO 2",
-  },
-  {
-    quote:
-      "The perfect MC for our corporate gathering. Witty, engaging, and kept the flow seamless.",
-    author: "Sarah D.",
-    role: "Event Organizer",
-  },
-  {
-    quote:
-      "Voice over work was delivered fast and with exceptional quality. Highly recommended!",
-    author: "Creative Director",
-    role: "Ad Agency",
-  },
-];
-
 export default function Testimonials() {
+  const { t } = useLanguage();
+
   return (
-    <section
-      id="testimonials"
-      className="border-b border-white text-white"
-    >
+    <section id="testimonials" className="border-b border-white text-white">
       <div className="grid grid-cols-1 lg:grid-cols-12">
         <div className="col-span-1 flex items-center justify-center border-b border-black p-12 lg:col-span-4 lg:border-b-0 lg:border-r dark:border-white">
           <h2 className="text-5xl font-black uppercase leading-none tracking-tighter text-center lg:text-left">
-            What <br /> They Say
+            {t.testimonials.title}
           </h2>
         </div>
 
         <div className="col-span-1 lg:col-span-8">
-          {testimonials.map((item, index) => (
+          {t.testimonials.items.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

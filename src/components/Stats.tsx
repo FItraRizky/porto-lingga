@@ -1,16 +1,19 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import CountUp from "./CountUp";
 
-const stats = [
-  { label: "Years on Air", value: 5, suffix: "+" },
-  { label: "Events Hosted", value: 200, suffix: "+" },
-  { label: "Daily Listeners", value: 50, suffix: "k+" },
-  { label: "Brand Partners", value: 30, suffix: "+" },
-];
-
 export default function Stats() {
+  const { t } = useLanguage();
+
+  const stats = [
+    { label: t.stats.years, value: 5, suffix: "+" },
+    { label: t.stats.events, value: 200, suffix: "+" },
+    { label: t.stats.listeners, value: 50, suffix: "k+" },
+    { label: t.stats.partners, value: 30, suffix: "+" },
+  ];
+
   return (
     <section id="stats" className="border-b border-white text-white">
       <div className="grid grid-cols-2 md:grid-cols-4">

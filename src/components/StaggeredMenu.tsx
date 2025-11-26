@@ -2,22 +2,25 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
-const menuItems = [
-  { name: "Profile", href: "#profile" },
-  { name: "Stats", href: "#stats" },
-  { name: "Broadcasts", href: "#broadcasts" },
-  { name: "Services", href: "#services" },
-  { name: "Achievements", href: "#achievements" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Contact", href: "#contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
+import FlowingMenu from "./FlowingMenu";
 
 export default function StaggeredMenu() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+
+  const menuItems = [
+    { name: t.menu.profile, href: "#profile" },
+    { name: t.menu.stats, href: "#stats" },
+    { name: t.menu.broadcasts, href: "#broadcasts" },
+    { name: t.menu.services, href: "#services" },
+    { name: t.menu.achievements, href: "#achievements" },
+    { name: t.menu.testimonials, href: "#testimonials" },
+    { name: t.menu.gallery, href: "#gallery" },
+    { name: t.menu.contact, href: "#contact" },
+  ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -58,30 +61,13 @@ export default function StaggeredMenu() {
     },
   };
 
-  const mobileLinkVars = {
-    initial: {
-      y: "30vh",
-      transition: {
-        duration: 0.5,
-        ease: [0.37, 0, 0.63, 1] as [number, number, number, number],
-      },
-    },
-    open: {
-      y: 0,
-      transition: {
-        ease: [0, 0.55, 0.45, 1] as [number, number, number, number],
-        duration: 0.7,
-      },
-    },
-  };
-
   return (
     <>
       <button
         onClick={toggleMenu}
         className="relative z-[70] flex items-center gap-2 font-bold uppercase tracking-widest"
       >
-        <span className="text-sm">Menu</span>
+        <span className="text-sm">{t.menu.label}</span>
         {isOpen ? <X size={24} className="text-white" /> : <Menu size={24} />}
       </button>
 
@@ -106,33 +92,21 @@ export default function StaggeredMenu() {
                 initial="initial"
                 animate="open"
                 exit="initial"
-                className="flex flex-col gap-4"
+                className="flex-1 w-full relative z-50 overflow-hidden"
               >
-                {menuItems.map((link) => (
-                  <div key={link.name} className="overflow-hidden">
-                    <motion.div
-                      variants={mobileLinkVars}
-                      className="text-5xl font-black uppercase tracking-tighter sm:text-7xl"
-                    >
-                      <Link
-                        href={link.href}
-                        onClick={toggleMenu}
-                        className="flex items-center gap-4 group"
-                      >
-                        {link.name}
-                        <ArrowRight
-                          className="opacity-0 -translate-x-10 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
-                          size={48}
-                        />
-                      </Link>
-                    </motion.div>
-                  </div>
-                ))}
+                <FlowingMenu
+                  items={menuItems.map((item) => ({
+                    link: item.href,
+                    text: item.name,
+                    image: "/profile-lingga.jpg",
+                    onClick: toggleMenu,
+                  }))}
+                />
               </motion.div>
 
               <div className="flex justify-between text-sm font-medium uppercase tracking-widest text-gray-400">
-                <span>Bandar Lampung, ID</span>
-                <span>Est. 2025</span>
+                <span>{t.menu.location}</span>
+                <span>{t.menu.est}</span>
               </div>
             </div>
           </motion.div>

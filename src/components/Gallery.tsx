@@ -1,13 +1,16 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 
 export default function Gallery() {
+  const { t } = useLanguage();
+
   return (
     <section id="gallery" className="border-b border-white text-white">
       <div className="p-6 md:p-12 border-b border-black dark:border-white">
         <h2 className="text-5xl font-black uppercase tracking-tighter md:text-8xl">
-          Captured Moments
+          {t.gallery.title}
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 h-[80vh]">
@@ -17,7 +20,7 @@ export default function Gallery() {
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-xl font-bold uppercase opacity-30">
-              On Air Studio
+              {t.gallery.items[0]}
             </span>
           </div>
           {/* Replace with <Image /> */}
@@ -28,7 +31,7 @@ export default function Gallery() {
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-xl font-bold uppercase opacity-30">
-              Live Event MC
+              {t.gallery.items[1]}
             </span>
           </div>
         </motion.div>
@@ -38,7 +41,7 @@ export default function Gallery() {
         >
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-xl font-bold uppercase opacity-30">
-              Fan Meetup
+              {t.gallery.items[2]}
             </span>
           </div>
         </motion.div>

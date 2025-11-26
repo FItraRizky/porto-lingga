@@ -1,11 +1,13 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 import { useRef } from "react";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -26,7 +28,7 @@ export default function Footer() {
           style={{ y, opacity }}
           className="mb-8 text-6xl font-black uppercase tracking-tighter sm:text-8xl md:text-9xl"
         >
-          Tune In.
+          {t.footer.tuneIn}
         </motion.h2>
         <a
           href="mailto:hello@linggafani.com"
@@ -59,7 +61,7 @@ export default function Footer() {
 
       <div className="flex justify-between border-t border-white/20 px-6 py-4 text-xs font-medium uppercase tracking-wider dark:border-black/20">
         <span>© {new Date().getFullYear()} Lingga Fani.</span>
-        <span>All Rights Reserved.</span>
+        <span>{t.footer.rights}</span>
       </div>
     </footer>
   );
