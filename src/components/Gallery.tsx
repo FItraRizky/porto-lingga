@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
 import Image from "next/image";
+import PixelCard from "./PixelCard";
 
 gsap.registerPlugin(Draggable);
 
@@ -17,6 +18,8 @@ const images = [
   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
   "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
 ];
+
+const variants = ["default", "blue", "yellow", "pink"] as const;
 
 export default function Gallery() {
   const { t } = useLanguage();
@@ -49,18 +52,21 @@ export default function Gallery() {
       <div className="gallery-wrapper relative w-full overflow-hidden cursor-grab active:cursor-grabbing py-10">
         <div ref={containerRef} className="flex gap-8 px-8 w-max">
           {images.map((src, i) => (
-            <div
+            <PixelCard
               key={i}
-              className="relative w-[300px] h-[400px] md:w-[400px] md:h-[500px] shrink-0 rounded-xl overflow-hidden shadow-2xl transition-transform hover:scale-[1.02] duration-300 border border-white/10"
+              variant={variants[i % variants.length]}
+              className="w-[300px] h-[400px] md:w-[400px] md:h-[500px] shrink-0"
             >
-              <Image
-                src={src}
-                alt={`Gallery image ${i + 1}`}
-                fill
-                className="object-cover pointer-events-none select-none"
-                draggable={false}
-              />
-            </div>
+              <div className="absolute inset-0">
+                <Image
+                  src={src}
+                  alt={`Gallery image ${i + 1}`}
+                  fill
+                  className="object-cover pointer-events-none select-none rounded-[25px]"
+                  draggable={false}
+                />
+              </div>
+            </PixelCard>
           ))}
         </div>
       </div>
