@@ -1,29 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 import { useLanguage } from "@/context/LanguageContext";
-import FlowingMenu from "./FlowingMenu";
 
 export default function StaggeredMenu() {
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  // Deteksi ukuran layar
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
 
   const menuItems = [
     { name: t.menu.profile, href: "#profile" },
@@ -118,48 +104,34 @@ export default function StaggeredMenu() {
                 </span>
               </div>
 
-              {/* Desktop: FlowingMenu */}
-              {isDesktop ? (
-                <motion.div
-                  variants={containerVars}
-                  initial="initial"
-                  animate="open"
-                  exit="initial"
-                  className="flex-1 w-full relative z-50 overflow-hidden"
-                >
-                  <FlowingMenu
-                    items={menuItems.map((item) => ({
-                      link: item.href,
-                      text: item.name,
-                      image: "/profile-lingga.jpg",
-                      onClick: toggleMenu,
-                    }))}
-                  />
-                </motion.div>
-              ) : (
-                /* Mobile/Tablet: Simple Staggered Menu */
-                <motion.div
-                  variants={containerVars}
-                  initial="initial"
-                  animate="open"
-                  exit="initial"
-                  className="flex flex-col h-full justify-center items-center gap-4 overflow-hidden"
-                >
-                  {menuItems.map((item, index) => (
-                    <div key={index} className="overflow-hidden">
-                      <motion.div variants={mobileLinkVars}>
-                        <Link
-                          href={item.href}
-                          onClick={toggleMenu}
-                          className="text-4xl md:text-5xl font-bold uppercase tracking-tight hover:text-gray-400 transition-colors block"
-                        >
-                          {item.name}
-                        </Link>
-                      </motion.div>
-                    </div>
-                  ))}
-                </motion.div>
-              )}
+              <motion.div
+                variants={containerVars}
+                initial="initial"
+                animate="open"
+                exit="initial"
+                className="flex flex-col gap-4"
+              >
+                {menuItems.map((link) => (
+                  <div key={link.name} className="overflow-hidden">
+                    <motion.div
+                      variants={mobileLinkVars}
+                      className="text-5xl font-black uppercase tracking-tighter sm:text-7xl"
+                    >
+                      <Link
+                        href={link.href}
+                        onClick={toggleMenu}
+                        className="flex items-center gap-4 group"
+                      >
+                        {link.name}
+                        <ArrowRight
+                          className="opacity-0 -translate-x-10 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
+                          size={48}
+                        />
+                      </Link>
+                    </motion.div>
+                  </div>
+                ))}
+              </motion.div>
 
               <div className="flex justify-between text-sm font-medium uppercase tracking-widest text-gray-400">
                 <span>{t.menu.location}</span>
