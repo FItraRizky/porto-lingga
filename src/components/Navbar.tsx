@@ -14,7 +14,7 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -58,29 +58,83 @@ export default function Navbar() {
               Lingga Fani
             </Link>
 
-            {/* Language Toggle */}
-            <div className="flex items-center gap-2 mr-4 font-bold uppercase tracking-widest text-sm">
-              <button
-                onClick={() => setLanguage("en")}
-                className={`${
-                  language === "en" ? "text-white" : "text-gray-500"
-                } transition-colors`}
-              >
-                EN
-              </button>
-              <span>/</span>
-              <button
-                onClick={() => setLanguage("id")}
-                className={`${
-                  language === "id" ? "text-white" : "text-gray-500"
-                } transition-colors`}
-              >
-                ID
-              </button>
-            </div>
+            <div className="flex items-center gap-6">
+              {/* Language Toggle */}
+              <div className="flex items-center gap-2 font-bold uppercase tracking-widest text-sm">
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`${
+                    language === "en" ? "text-white" : "text-gray-500"
+                  } transition-colors hover:text-white`}
+                >
+                  EN
+                </button>
+                <span className="text-gray-600">/</span>
+                <button
+                  onClick={() => setLanguage("id")}
+                  className={`${
+                    language === "id" ? "text-white" : "text-gray-500"
+                  } transition-colors hover:text-white`}
+                >
+                  ID
+                </button>
+              </div>
 
-            {/* Mobile Menu */}
-            <StaggeredMenu />
+              {/* Mobile Menu */}
+              <StaggeredMenu
+                items={[
+                  {
+                    label: t.menu.profile,
+                    link: "#profile",
+                    ariaLabel: t.menu.profile,
+                  },
+                  {
+                    label: t.menu.stats,
+                    link: "#stats",
+                    ariaLabel: t.menu.stats,
+                  },
+                  {
+                    label: t.menu.broadcasts,
+                    link: "#broadcasts",
+                    ariaLabel: t.menu.broadcasts,
+                  },
+                  {
+                    label: t.menu.services,
+                    link: "#services",
+                    ariaLabel: t.menu.services,
+                  },
+                  {
+                    label: t.menu.achievements,
+                    link: "#achievements",
+                    ariaLabel: t.menu.achievements,
+                  },
+                  {
+                    label: t.menu.testimonials,
+                    link: "#testimonials",
+                    ariaLabel: t.menu.testimonials,
+                  },
+                  {
+                    label: t.menu.gallery,
+                    link: "#gallery",
+                    ariaLabel: t.menu.gallery,
+                  },
+                  {
+                    label: t.menu.contact,
+                    link: "#contact",
+                    ariaLabel: t.menu.contact,
+                  },
+                ]}
+                socialItems={[
+                  { label: "Instagram", link: "https://instagram.com" },
+                  { label: "LinkedIn", link: "https://linkedin.com" },
+                  { label: "Twitter", link: "https://twitter.com" },
+                ]}
+                menuButtonColor="#ffffff"
+                openMenuButtonColor="#ffffff"
+                accentColor="#ffffff"
+                position="right"
+              />
+            </div>
           </div>
         </motion.nav>
       )}
