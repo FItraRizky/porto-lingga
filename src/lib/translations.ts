@@ -136,6 +136,9 @@ export const translations = {
         },
       ],
     },
+    partners: {
+      title: "Alumni",
+    },
     footer: {
       tuneIn: "Tune In.",
       rights: "All Rights Reserved.",
@@ -275,6 +278,9 @@ export const translations = {
           role: "Agensi Iklan",
         },
       ],
+    },
+    partners: {
+      title: "Mitra",
     },
     footer: {
       tuneIn: "Dengarkan.",

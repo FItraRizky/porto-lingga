@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Stats from "@/components/Stats";
 import ProgramList from "@/components/ProgramList";
 import Services from "@/components/Services";
+import Partners from "@/components/Partners";
 import Footer from "@/components/Footer";
 
 // Lazy load heavy components for better performance
@@ -44,6 +45,7 @@ export default function Home() {
       <Services />
       <Achievements />
       <Testimonials />
+      <Partners />
       <Gallery />
       <Footer />
     </div>
