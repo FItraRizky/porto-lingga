@@ -48,7 +48,7 @@ export default function Navbar() {
           animate={{ y: 0 }}
           exit={{ y: -100 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="fixed top-0 z-50 w-full border-b border-white bg-black/80 backdrop-blur-sm text-white"
+          className="fixed top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-sm text-[var(--foreground)]"
         >
           <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
             <Link
@@ -64,17 +64,21 @@ export default function Navbar() {
                 <button
                   onClick={() => setLanguage("en")}
                   className={`${
-                    language === "en" ? "text-white" : "text-gray-500"
-                  } transition-colors hover:text-white`}
+                    language === "en"
+                      ? "text-[var(--foreground)]"
+                      : "text-[var(--muted-foreground)]"
+                  } transition-colors hover:text-[var(--foreground)]`}
                 >
                   EN
                 </button>
-                <span className="text-gray-600">/</span>
+                <span className="text-[var(--muted-foreground)]">/</span>
                 <button
                   onClick={() => setLanguage("id")}
                   className={`${
-                    language === "id" ? "text-white" : "text-gray-500"
-                  } transition-colors hover:text-white`}
+                    language === "id"
+                      ? "text-[var(--foreground)]"
+                      : "text-[var(--muted-foreground)]"
+                  } transition-colors hover:text-[var(--foreground)]`}
                 >
                   ID
                 </button>
@@ -129,9 +133,9 @@ export default function Navbar() {
                   { label: "LinkedIn", link: "https://linkedin.com" },
                   { label: "Twitter", link: "https://twitter.com" },
                 ]}
-                menuButtonColor="#ffffff"
-                openMenuButtonColor="#ffffff"
-                accentColor="#ffffff"
+                menuButtonColor="#CF4B00"
+                openMenuButtonColor="#CF4B00"
+                accentColor="#CF4B00"
                 position="right"
               />
             </div>

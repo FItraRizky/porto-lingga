@@ -8,13 +8,16 @@ export default function ProgramList() {
   const { t } = useLanguage();
 
   return (
-    <section id="broadcasts" className="border-b border-white text-white">
+    <section
+      id="broadcasts"
+      className="border-b border-[var(--border)] text-[var(--foreground)]"
+    >
       <div className="grid grid-cols-1 md:grid-cols-12">
-        <div className="col-span-1 border-b border-black p-6 md:col-span-4 md:border-b-0 md:border-r dark:border-white">
+        <div className="col-span-1 border-b border-[var(--border)] p-6 md:col-span-4 md:border-b-0 md:border-r">
           <h2 className="sticky top-24 text-5xl font-black uppercase leading-none tracking-tighter">
             {t.programs.title}
           </h2>
-          <p className="mt-4 text-lg font-medium text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg font-medium text-[var(--muted-foreground)]">
             {t.programs.subtitle}
           </p>
         </div>
@@ -27,7 +30,7 @@ export default function ProgramList() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative flex flex-col gap-4 border-b border-black p-6 transition-colors hover:bg-black hover:text-white last:border-b-0 md:flex-row md:items-center md:justify-between dark:border-white dark:hover:bg-white dark:hover:text-black"
+              className="group relative flex flex-col gap-4 border-b border-[var(--border)] p-6 transition-colors hover:bg-[var(--foreground)] hover:text-[var(--background)] last:border-b-0 md:flex-row md:items-center md:justify-between"
             >
               <div className="flex-1">
                 <h3 className="text-3xl font-black uppercase tracking-tight">

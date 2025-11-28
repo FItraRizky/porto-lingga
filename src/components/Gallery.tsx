@@ -60,9 +60,9 @@ export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="border-b border-white text-white overflow-hidden bg-black py-20"
+      className="border-b border-[var(--border)] text-[var(--foreground)] overflow-hidden bg-[var(--background)] py-20"
     >
-      <div className="p-6 md:p-12 mb-10 border-b border-white/20">
+      <div className="p-6 md:p-12 mb-10 border-b border-[var(--border)]/20">
         <h2 className="text-5xl font-black uppercase tracking-tighter md:text-8xl text-center">
           {t.gallery.title}
         </h2>
@@ -74,7 +74,7 @@ export default function Gallery() {
             <PixelCard
               key={i}
               colors={img.colors}
-              className="w-[300px] h-[400px] md:w-[400px] md:h-[500px] shrink-0 group bg-neutral-900"
+              className="w-[300px] h-[400px] md:w-[400px] md:h-[500px] shrink-0 group bg-[var(--muted)]"
             >
               <div className="absolute inset-0">
                 <Image

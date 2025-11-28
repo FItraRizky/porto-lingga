@@ -8,9 +8,12 @@ export default function About() {
   const { t } = useLanguage();
 
   return (
-    <section id="profile" className="border-b border-white text-white">
+    <section
+      id="profile"
+      className="border-b border-[var(--border)] text-[var(--foreground)]"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2">
-        <div className="relative min-h-[500px] border-b border-black bg-gray-200 md:border-b-0 md:border-r dark:border-white dark:bg-gray-800 overflow-hidden group">
+        <div className="relative min-h-[500px] border-b border-[var(--border)] bg-[var(--muted)] md:border-b-0 md:border-r overflow-hidden group">
           <Image
             src="/profile-lingga.jpg"
             alt="Lingga Fani - Radio Announcer"
@@ -25,7 +28,7 @@ export default function About() {
           <h2 className="mb-8 text-4xl font-black uppercase leading-none tracking-tighter md:text-6xl">
             <RotatingText
               texts={t.about.rotating}
-              mainClassName="px-2 sm:px-2 md:px-3 bg-[#ff007f] text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-start rounded-lg inline-flex"
+              mainClassName="px-2 sm:px-2 md:px-3 bg-[#CF4B00] text-[var(--background)] overflow-hidden py-0.5 sm:py-1 md:py-2 justify-start rounded-lg inline-flex"
               staggerFrom="last"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}

@@ -30,12 +30,15 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="border-b border-white text-white">
+    <section
+      id="services"
+      className="border-b border-[var(--border)] text-[var(--foreground)]"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {services.map((service, index) => (
           <div
             key={service.title}
-            className="group flex flex-col justify-between border-b border-black p-8 last:border-b-0 md:border-b-0 md:border-r lg:border-r dark:border-white"
+            className="group flex flex-col justify-between border-b border-[var(--border)] p-8 last:border-b-0 md:border-b-0 md:border-r lg:border-r"
           >
             <div className="mb-8">
               <service.icon size={48} strokeWidth={1.5} className="mb-6" />

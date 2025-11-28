@@ -96,7 +96,7 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: "#000000",
+  themeColor: "#FCF6D9",
 };
 
 export default function RootLayout({
@@ -136,7 +136,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
         <LanguageProvider>
-          <div className="fixed inset-0 z-0 bg-black">
+          <div className="fixed inset-0 z-0 bg-[var(--background)]">
             <LightRaysOptimized
               className="absolute inset-0"
               followMouse={false}

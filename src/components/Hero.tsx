@@ -9,7 +9,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative flex min-h-[90vh] flex-col justify-between border-b border-white text-white overflow-hidden">
+    <section className="relative flex min-h-[90vh] flex-col justify-between border-b border-[var(--border)] text-[var(--foreground)] overflow-hidden">
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 text-center">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -17,7 +17,7 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <GradientText
-            colors={["#ffffff", "#a855f7", "#3b82f6", "#ffffff"]}
+            colors={["#CF4B00", "#9CC6DB", "#DDBA7D", "#CF4B00"]}
             animationSpeed={6}
             className="text-6xl font-black uppercase leading-[0.9] tracking-tighter sm:text-8xl md:text-9xl lg:text-[10rem]"
           >
@@ -31,7 +31,7 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.8 }}
         >
           <GradientText
-            colors={["#ffffff", "#60a5fa", "#ffffff"]}
+            colors={["#CF4B00", "#9CC6DB", "#CF4B00"]}
             animationSpeed={4}
             className="mt-8 text-xl font-bold uppercase tracking-widest sm:text-2xl"
           >
@@ -40,10 +40,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <Marquee
-        duration={40}
-        className="border-t border-black dark:border-white"
-      >
+      <Marquee duration={40} className="border-t border-[var(--border)]">
         <span className="text-4xl font-black uppercase mx-4">
           {t.hero.marquee.onAir}
         </span>

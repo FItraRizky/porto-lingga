@@ -15,12 +15,15 @@ export default function Stats() {
   ];
 
   return (
-    <section id="stats" className="border-b border-white text-white">
+    <section
+      id="stats"
+      className="border-b border-[var(--border)] text-[var(--foreground)]"
+    >
       <div className="grid grid-cols-2 md:grid-cols-4">
         {stats.map((stat, index) => (
           <div
             key={stat.label}
-            className="flex flex-col items-center justify-center border-b border-r border-white/20 p-12 last:border-r-0 md:border-b-0"
+            className="flex flex-col items-center justify-center border-b border-r border-[var(--border)]/20 p-12 last:border-r-0 md:border-b-0"
           >
             <motion.div
               initial={{ scale: 0.5, opacity: 0 }}

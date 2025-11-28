@@ -21,7 +21,7 @@ export default function Footer() {
     <footer
       ref={container}
       id="contact"
-      className="bg-black text-white dark:bg-white dark:text-black overflow-hidden"
+      className="bg-[var(--foreground)] text-[var(--background)] overflow-hidden"
     >
       <div className="flex flex-col items-center justify-center py-20 text-center">
         <motion.h2
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex justify-between border-t border-white/20 px-6 py-4 text-xs font-medium uppercase tracking-wider dark:border-black/20">
+      <div className="flex justify-between border-t border-[var(--background)]/20 px-6 py-4 text-xs font-medium uppercase tracking-wider">
         <span>© {new Date().getFullYear()} Lingga Fani.</span>
         <span>{t.footer.rights}</span>
       </div>

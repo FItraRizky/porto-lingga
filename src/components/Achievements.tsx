@@ -10,8 +10,11 @@ export default function Achievements() {
   const icons = [Award, Radio, Mic, Trophy];
 
   return (
-    <section id="achievements" className="border-b border-white text-white">
-      <div className="p-6 md:p-12 border-b border-black dark:border-white">
+    <section
+      id="achievements"
+      className="border-b border-[var(--border)] text-[var(--foreground)]"
+    >
+      <div className="p-6 md:p-12 border-b border-[var(--border)]">
         <h2 className="text-5xl font-black uppercase tracking-tighter md:text-8xl">
           {t.achievements.title}
         </h2>
@@ -25,7 +28,7 @@ export default function Achievements() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="group flex items-start gap-6 border-b border-black p-8 md:border-r md:last:border-r-0 dark:border-white"
+              className="group flex items-start gap-6 border-b border-[var(--border)] p-8 md:border-r md:last:border-r-0"
             >
               <div className="flex-shrink-0">
                 <Icon size={48} strokeWidth={1.5} />
