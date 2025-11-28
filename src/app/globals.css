@@ -111,6 +111,7 @@
 
 body {
   background-color: var(--background);
+  font-family: var(--font-playfair);
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
