@@ -594,15 +594,17 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           .sm-scope .sm-socials-link:hover { color: var(--sm-accent, #CF4B00); }
           .sm-scope .sm-panel-title { margin: 0; font-size: 1rem; font-weight: 600; color: #CF4B00; text-transform: uppercase; }
           .sm-scope .sm-panel-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
-          .sm-scope .sm-panel-item { position: relative; color: #CF4B00; font-weight: 600; font-size: clamp(2.5rem, 6vw, 4rem); cursor: pointer; line-height: 1; letter-spacing: -2px; text-transform: uppercase; transition: background 0.25s, color 0.25s; display: inline-block; text-decoration: none; padding-right: 1.4em; }
+          .sm-scope .sm-panel-item { position: relative; color: #CF4B00; font-weight: 600; font-size: clamp(2.5rem, 6vw, 4rem); cursor: pointer; line-height: 1; letter-spacing: -2px; text-transform: uppercase; transition: background 0.25s, color 0.25s; display: inline-block; text-decoration: none; padding-left: 1.2em; }
           .sm-scope .sm-panel-itemLabel { display: inline-block; will-change: transform; transform-origin: 50% 100%; }
           .sm-scope .sm-panel-item:hover { color: var(--sm-accent, #ff0000); }
           .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
-          .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 3.2em; font-size: 18px; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
+          .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::before { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; left: 0; font-size: 0.4em; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
           @media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } }
           @media (max-width: 640px) { 
-            .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; padding: 5em 1.5em 2em 1.5em; }
+            .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; padding: 5em 1.5em 6em 1.5em; }
             .sm-scope .sm-panel-item { font-size: 2.5rem; }
+            .sm-scope .sm-socials { padding-bottom: 2rem; }
+            .sm-scope .sm-socials-link { font-size: 1.4rem; padding: 8px 0; }
           }
         `}</style>
       </div>,
