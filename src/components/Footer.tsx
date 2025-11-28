@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { Instagram, Linkedin, Twitter } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import DotGrid from "./DotGrid";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -21,9 +22,19 @@ export default function Footer() {
     <footer
       ref={container}
       id="contact"
-      className="bg-[var(--foreground)] text-[var(--background)] overflow-hidden"
+      className="relative bg-[var(--foreground)] text-[var(--background)] overflow-hidden"
     >
-      <div className="flex flex-col items-center justify-center py-20 text-center">
+      <div className="absolute inset-0 z-0 opacity-30">
+        <DotGrid
+          baseColor="#DDBA7D"
+          activeColor="#FCF6D9"
+          dotSize={4}
+          gap={20}
+          proximity={100}
+        />
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center justify-center py-20 text-center">
         <motion.h2
           style={{ y, opacity }}
           className="mb-8 text-6xl font-black uppercase tracking-tighter sm:text-8xl md:text-9xl"
@@ -59,7 +70,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="flex justify-between border-t border-[var(--background)]/20 px-6 py-4 text-xs font-medium uppercase tracking-wider">
+      <div className="relative z-10 flex justify-between border-t border-[var(--background)]/20 px-6 py-4 text-xs font-medium uppercase tracking-wider">
         <span>© {new Date().getFullYear()} Lingga Fani.</span>
         <span>{t.footer.rights}</span>
       </div>
