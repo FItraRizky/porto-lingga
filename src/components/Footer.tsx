@@ -28,7 +28,7 @@ export default function Footer() {
         <DotGrid
           baseColor="#DDBA7D"
           activeColor="#FCF6D9"
-          dotSize={4}
+          dotSize={5}
           gap={20}
           proximity={100}
         />
