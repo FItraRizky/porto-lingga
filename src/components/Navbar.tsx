@@ -129,7 +129,7 @@ export default function Navbar() {
                   },
                 ]}
                 socialItems={[
-                  { label: "Instagram", link: "https://instagram.com" },
+                  { label: "Instagram", link: "https://www.instagram.com/linggaaa.fni/" },
                   { label: "LinkedIn", link: "https://linkedin.com" },
                   { label: "Twitter", link: "https://twitter.com" },
                 ]}

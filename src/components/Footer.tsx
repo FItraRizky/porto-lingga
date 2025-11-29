@@ -7,6 +7,8 @@ import { Instagram, Linkedin, Twitter } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import DotGrid from "./DotGrid";
 
+import TextType from "./TextType";
+
 export default function Footer() {
   const { t } = useLanguage();
   const container = useRef(null);
@@ -39,7 +41,15 @@ export default function Footer() {
           style={{ y, opacity }}
           className="mb-8 text-6xl font-black uppercase tracking-tighter sm:text-8xl md:text-9xl"
         >
-          {t.footer.tuneIn}
+          <TextType
+            as="span"
+            text={[t.footer.tuneIn]}
+            typingSpeed={200}
+            deletingSpeed={100}
+            loop={true}
+            showCursor={true}
+            cursorCharacter="|"
+          />
         </motion.h2>
         <a
           href="mailto:hello@linggafani.com"
@@ -50,7 +60,7 @@ export default function Footer() {
 
         <div className="flex gap-8">
           <Link
-            href="#"
+            href="https://www.instagram.com/linggaaa.fni/"
             className="transform transition-transform hover:scale-110"
           >
             <Instagram size={32} />
